@@ -17,11 +17,15 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        User::factory()->count(2)->sequence([
+            'name' => 'Bastien',
+            'email' => 'bastien.thouverez@gmail.com',
+            'is_admin' => true,
+        ],[
+            'name' => 'Marion',
+            'email' => 'marion.beche@gmail.com',
+        ]  )->create();
 
-        TodoList::factory(50)->hasTasks(13)->create();
+#        TodoList::factory(50)->hasTasks(13)->create();
     }
 }

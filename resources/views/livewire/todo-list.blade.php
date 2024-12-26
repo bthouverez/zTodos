@@ -1,4 +1,4 @@
-<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-12">
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-4">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ $list->title }}
@@ -21,9 +21,13 @@
             </form>
             <div
                 class="w-full text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                @foreach($list->tasks->sortBy([['completed', 'asc'], ['created_at', 'desc']]) as $task)
+                @forelse($list->tasks->sortBy([['completed', 'asc'], ['created_at', 'desc']]) as $task)
                     <livewire:task-component :$task :key="$task->id"/>
-                @endforeach
+                @empty
+                    <div class="p-4 text-center text-gray-500 dark:text-gray-400">
+                        {{ __('No tasks yet') }}
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>
