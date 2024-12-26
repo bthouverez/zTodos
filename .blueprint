@@ -1,0 +1,11 @@
+created:
+    - database/factories/TodoListFactory.php
+    - database/factories/TaskFactory.php
+    - database/migrations/2024_12_25_235632_create_todo_lists_table.php
+    - database/migrations/2024_12_25_235633_create_tasks_table.php
+    - app/Models/TodoList.php
+    - app/Models/Task.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string nullable', current_team_id: 'integer nullable', profile_photo_path: 'string nullable', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable', two_factor_confirmed_at: 'datetime nullable' }
+    TodoList: { title: string, relationships: { hasMany: Task, belongsTo: User } }
+    Task: { label: string, completed: boolean, relationships: { belongsTo: TodoList } }

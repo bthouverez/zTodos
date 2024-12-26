@@ -1,0 +1,12 @@
+models:
+  TodoList:
+    title: string
+    relationships:
+      hasMany: Task
+      belongsTo: User
+  Task:
+    label: string
+    completed: boolean
+    relationships:
+      belongsTo: TodoList
+
